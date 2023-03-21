@@ -1,19 +1,19 @@
 import { AppBar } from "@material-ui/core";
 import CartWidget from "./CartWidget";
 import { Wrapper, Logo, MenuItem, Left, Center, Right } from './styledComponents';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
         <AppBar position="relative">
             <Wrapper>
                 <Left>
-                    <Logo>ALT.EN $HO.P</Logo>
+                    <Logo><Link to="/">ALT.EN $HO.P</Link></Logo>
                 </Left>
                 <Center>
-                    <MenuItem>CATEGORÍA 1</MenuItem>
-                    <MenuItem>CATEGORÍA 2</MenuItem>
-                    <MenuItem>CATEGORÍA 3</MenuItem>                    
-                    <MenuItem>CATEGORÍA 4</MenuItem>                    
+                    <MenuItem><Link to="/category/1">VINOS</Link></MenuItem>
+                    <MenuItem><Link to="/category/9">SIN ALCOHOL</Link></MenuItem>
+                    <MenuItem><Link to="/category/5">LICORES</Link></MenuItem>                    
                 </Center>
                 <Right>
                     <MenuItem>REGISTER</MenuItem>
