@@ -1,17 +1,19 @@
-import ItemCount from './ItemCount';
 import ItemList from './ItemList';
-import { Wrapper } from './styledComponents';
-import customFetch from "../utils/customFetch";
 import { useEffect, useState } from 'react';
-const { products } = require('../utils/products');
+import axios from 'axios';
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
     const [datos, setDatos] = useState([]);
 
+    //ComponentDidMount()
     useEffect(() => {
-        customFetch(2000, products)
-            .then(result => setDatos(result))
-            .catch(err => console.log(err))
+        // fetch('https://api.mercadolibre.com/sites/MLA/search?q=ordenador')
+        //     .then(results => results.json())
+        //     .then(results => setDatos(results.results))
+        //     .catch(error => console.log(error))
+        axios('https://api.mercadolibre.com/sites/MLA/search?q=televisor')
+            .then(results => setDatos(results.data.results))
+            .catch(error => console.log(error))
     }, []);
 
     const onAdd = (qty) => {
@@ -20,9 +22,7 @@ const ItemListContainer = ({greeting}) => {
 
     return (
         <>  
-            <Wrapper>{greeting}</Wrapper>
             <ItemList items={datos} />
-            <ItemCount stock={5} initial={1} onAdd={onAdd} />
         </>
     );
 }

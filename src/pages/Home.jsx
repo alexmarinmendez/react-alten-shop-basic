@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <div>
             <NavBar />
-            <ItemListContainer greeting="Hola Mundo ItemListContainer!!!" />
+            <ItemListContainer />
             {/* <ItemDetailContainer /> */}
         </div>
     );
