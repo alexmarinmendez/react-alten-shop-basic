@@ -10,20 +10,20 @@ const ItemDetail = ({ item }) => {
     return (
         <>
         {
-            item.thumbnail
+            (item.image && item.image[0])
             ? 
             <DetailContainer>
                 <WrapperDetail>
                     <ImgContainer>
-                        <ImageDetail src={item.thumbnail} />
+                        <ImageDetail src={item.image[0]} />
                     </ImgContainer>
                     <InfoContainer>
-                        <Title>{item.title}</Title>
-                        {/* <Desc>{item.description}</Desc> */}
-                        <Price>$ {item.price}</Price>
-                        <Desc>{item.available_quantity} unidades en stock</Desc>
+                        <Title>{item.name}</Title>
+                        <Desc>{item.description}</Desc>
+                        <Price>$ {item.cost}</Price>
+                        <Desc>{item.stock} unidades en stock</Desc>
                     </InfoContainer>
-                    <ItemCount stock={item.available_quantity} initial={1} onAdd={onAdd} />
+                    <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
                 </WrapperDetail>
             </DetailContainer>
             : <p>Cargando...</p>
