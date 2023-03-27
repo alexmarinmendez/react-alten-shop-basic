@@ -4,27 +4,39 @@ import { WrapperCart, TitleCart, ContentCart, Product, ProductDetail, ImageCart,
 
 const Cart = () => {
     const test = useContext(CartContext);
+    // const { cartList } = useContext(CartContext);
+    console.log(test)
 
     return (
         <WrapperCart>
             <TitleCart>YOUR CART</TitleCart>
+            
             <ContentCart>
-                    <Product>
+                {
+                    (test.cartList.length === 0) ? <p>Tu carrito está vacío</p> : <button onClick={test.clearCart}>DELETE ALL</button>
+                }
+              {
+                test.cartList.map((item, index) => (
+                  <Product key={index}>
                     <ProductDetail>
-                        <ImageCart src="https://i.imgur.com/z0hC49v.jpg" />
+                        <ImageCart src={item.image} />
                         <Details>
                         <span>
-                            <b>Product:</b> JESSIE THUNDER SHOES
+                            <b>Product:</b> {item.title}
                         </span>
+                        <button onClick={() => test.deleteItem(item.id)}>DELETE PRODUCT</button>
                         </Details>
                     </ProductDetail>
                     <PriceDetail>
                         <ProductAmountContainer>
-                        <ProductAmount>2 items</ProductAmount>
+                        <ProductAmount>{item.qty} items</ProductAmount>
                         </ProductAmountContainer>
-                        <ProductPrice>$ 30 each</ProductPrice>
+                        <ProductPrice>$ {item.price} each</ProductPrice>
                     </PriceDetail>
                     </Product>
+                ))
+              }
+                    
             </ContentCart>
         </WrapperCart>
     );

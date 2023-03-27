@@ -1,10 +1,14 @@
+import { useContext } from 'react'
+import { CartContext } from '../contexts/CartContext';
 import ItemCount from './ItemCount';
 import { DetailContainer, WrapperDetail, ImgContainer, ImageDetail, InfoContainer, Title, Desc, Price } from './styledComponents';
 
 const ItemDetail = ({ item }) => {
+    const test = useContext(CartContext)
 
     const onAdd = (qty) => {
         alert("You have selected " + qty + " items.");
+        test.addToCart(item, qty)
     }
 
     return (
